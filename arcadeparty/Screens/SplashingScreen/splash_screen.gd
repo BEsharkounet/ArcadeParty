@@ -1,5 +1,7 @@
 extends Panel
 
+## sound from https://pixabay.com/service/license-summary/
+
 #region signals
 signal on_full_visible()
 #endregion
