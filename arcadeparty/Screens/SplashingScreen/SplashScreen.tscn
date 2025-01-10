@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cv6jva6iw0cor"]
+[gd_scene load_steps=6 format=3 uid="uid://cv6jva6iw0cor"]
 
 [ext_resource type="Script" path="res://Screens/SplashingScreen/splash_screen.gd" id="1_0r66y"]
 [ext_resource type="Texture2D" uid="uid://b6q0cxptbeqml" path="res://Screens/SplashingScreen/SharkounetLogo.png" id="1_xaqnc"]
 [ext_resource type="FontFile" uid="uid://bx4iseqb6rt8i" path="res://Screens/SplashingScreen/Cramaten.ttf" id="2_pni3n"]
+[ext_resource type="AudioStream" uid="uid://bqovf6bwguqsg" path="res://Screens/SplashingScreen/ocean-wave-medium-236012.mp3" id="4_kfpbr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gl0qj"]
 bg_color = Color(1.54018e-06, 0.686921, 0.684632, 1)
@@ -58,5 +59,8 @@ size_flags_vertical = 3
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.6
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_kfpbr")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

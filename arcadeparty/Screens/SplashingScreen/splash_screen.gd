@@ -13,13 +13,17 @@ var _visibility_speed:float = 0.6
 func _ready() -> void:
 	_update_display()
 	_connect_signals()
+	_play_sound()
 
 func _process(delta: float) -> void:
 	_increase_visibility(delta)
 #endregion
 
 #region private methods
-func _connect_signals()->void:
+func _play_sound() -> void:
+	$Sound.play()
+
+func _connect_signals() -> void:
 	on_full_visible.connect(_on_full_visible_signal_emit)
 
 func _increase_visibility(delta:float)->void:
