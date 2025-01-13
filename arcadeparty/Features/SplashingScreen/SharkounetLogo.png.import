@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dh41fp0nqugbf"
-path="res://.godot/imported/SharkounetLogo_shark.png-c3c1cfc979eaa14dbd17b388a8bade58.ctex"
+uid="uid://b6q0cxptbeqml"
+path="res://.godot/imported/SharkounetLogo.png-18f64e6a23de88cd582f1360150dfb32.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Screens/SplashingScreen/SharkounetLogo_shark.png"
-dest_files=["res://.godot/imported/SharkounetLogo_shark.png-c3c1cfc979eaa14dbd17b388a8bade58.ctex"]
+source_file="res://Features/SplashingScreen/SharkounetLogo.png"
+dest_files=["res://.godot/imported/SharkounetLogo.png-18f64e6a23de88cd582f1360150dfb32.ctex"]
 
 [params]
 

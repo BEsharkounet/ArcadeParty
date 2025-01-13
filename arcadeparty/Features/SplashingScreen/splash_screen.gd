@@ -6,9 +6,17 @@ extends Panel
 signal on_full_visible()
 #endregion
 
+#region nodes
+@onready var _scene_transition:Control = $SceneTransition
+#endregion
+
 #region private properties
 var visibility:float = 0.0
 var _visibility_speed:float = 0.6
+#endregion
+
+#region public properties
+@export var next_scene_path:String = "res://Features/Menu/Menu/Menu.tscn"
 #endregion
 
 #region override
@@ -43,7 +51,7 @@ func _update_display() -> void:
 
 #region signal handling
 func _on_timer_timeout() -> void:
-	print("change scene")
+	_scene_transition.change_scene(next_scene_path)
 	
 func _on_full_visible_signal_emit() -> void:
 	$Timer.start(1.0)

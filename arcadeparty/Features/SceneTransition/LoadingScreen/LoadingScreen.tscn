@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6jgwxklakd3c"]
+
+[ext_resource type="Script" path="res://Features/SceneTransition/LoadingScreen/loading_screen.gd" id="1_heg3n"]
+[ext_resource type="PackedScene" uid="uid://bv445g5wptlxy" path="res://Features/SceneTransition/SceneTransition/SceneTransition.tscn" id="2_uksfd"]
+[ext_resource type="PackedScene" uid="uid://byoidt5pytqgv" path="res://Features/SceneTransition/LoadingScreen/LoadingView.tscn" id="3_e1vwr"]
+
+[node name="LoadingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_heg3n")
+
+[node name="SceneTransition" parent="." instance=ExtResource("2_uksfd")]
+layout_mode = 1
+
+[node name="LoadingView" parent="." instance=ExtResource("3_e1vwr")]
+layout_mode = 1
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="on_loading_status_update" from="." to="LoadingView" method="_on_loading_screen_on_loading_status_update"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

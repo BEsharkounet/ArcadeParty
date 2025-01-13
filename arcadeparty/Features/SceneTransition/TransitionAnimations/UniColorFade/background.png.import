@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6q0cxptbeqml"
-path="res://.godot/imported/SharkounetLogo.png-0cb2bc4434a00bc95326996b12d0a2de.ctex"
+uid="uid://cu6key7f1vl4t"
+path="res://.godot/imported/background.png-0b333a8662061ad3378133508127cfd3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Screens/SplashingScreen/SharkounetLogo.png"
-dest_files=["res://.godot/imported/SharkounetLogo.png-0cb2bc4434a00bc95326996b12d0a2de.ctex"]
+source_file="res://Features/SceneTransition/TransitionAnimations/UniColorFade/background.png"
+dest_files=["res://.godot/imported/background.png-0b333a8662061ad3378133508127cfd3.ctex"]
 
 [params]
 

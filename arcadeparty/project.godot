@@ -14,7 +14,12 @@ config/name="ArcadeParty"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SceneTransition="*res://Features/SceneTransition/Autoload/SceneTransition.gd"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.456464, 0.456464, 0.456464, 1)

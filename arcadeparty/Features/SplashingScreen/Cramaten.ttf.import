@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bx4iseqb6rt8i"
-path="res://.godot/imported/Cramaten.ttf-74eb190399a9d53ae40fd59048f9957b.fontdata"
+path="res://.godot/imported/Cramaten.ttf-6a4a7f96b75654350eb91ea67917f81f.fontdata"
 
 [deps]
 
-source_file="res://Screens/SplashingScreen/Cramaten.ttf"
-dest_files=["res://.godot/imported/Cramaten.ttf-74eb190399a9d53ae40fd59048f9957b.fontdata"]
+source_file="res://Features/SplashingScreen/Cramaten.ttf"
+dest_files=["res://.godot/imported/Cramaten.ttf-6a4a7f96b75654350eb91ea67917f81f.fontdata"]
 
 [params]
 
