@@ -1,23 +1,110 @@
-[gd_scene load_steps=4 format=3 uid="uid://fb6bwaqr3t8t"]
+[gd_scene load_steps=9 format=3 uid="uid://fb6bwaqr3t8t"]
 
-[ext_resource type="Texture2D" uid="uid://b4ai2ckt3cafa" path="res://icon.svg" id="1_px4fx"]
+[ext_resource type="Script" path="res://Features/Menu/Menu/menu.gd" id="1_6dig1"]
 [ext_resource type="PackedScene" uid="uid://bv445g5wptlxy" path="res://Features/SceneTransition/SceneTransition/SceneTransition.tscn" id="2_w4hj1"]
 [ext_resource type="PackedScene" uid="uid://cg7xobayabbpm" path="res://Features/SceneTransition/TransitionAnimations/MultiBoxColorFade/MultiBoxColorFade.tscn" id="3_7aowl"]
+[ext_resource type="PackedScene" uid="uid://c0kbhcprgacrf" path="res://Features/SceneTransition/TransitionAnimations/MultiBoxColorFadeTop/MultiBoxColorFadeTop.tscn" id="3_ic244"]
+[ext_resource type="PackedScene" uid="uid://dvlflo3krnswi" path="res://Features/Menu/TouchScreenButtonSized/TouchScreenButtonSized.tscn" id="4_uuuy5"]
+[ext_resource type="Texture2D" uid="uid://cge7g1yv6bc48" path="res://Features/Menu/Menu/triangle.png" id="5_chihm"]
+[ext_resource type="AudioStream" uid="uid://com36su6fp3is" path="res://Features/Menu/Menu/gaming-music-2-192858.mp3" id="6_aiphf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vpyse"]
+bg_color = Color(0.532745, 0.763449, 0.829192, 1)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Icon" type="Sprite2D" parent="."]
-texture = ExtResource("1_px4fx")
+script = ExtResource("1_6dig1")
 
 [node name="SceneTransition" parent="." instance=ExtResource("2_w4hj1")]
 layout_mode = 1
 
+[node name="MultiBoxColorFadeTop" parent="SceneTransition" instance=ExtResource("3_ic244")]
+is_out_animation = false
+
 [node name="MultiBoxColorFade" parent="SceneTransition" instance=ExtResource("3_7aowl")]
+is_in_animation = false
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vpyse")
+
+[node name="MenuSelection" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="MenuSelection"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="MenuSelection/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="MenuSelection/Control/Control"]
+position = Vector2(-100, 100)
+scale = Vector2(2.1, 2.1)
+texture = ExtResource("5_chihm")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuSelection"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MargeTop" type="Control" parent="MenuSelection/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NewGamebutton" parent="MenuSelection/VBoxContainer" instance=ExtResource("4_uuuy5")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "New Game"
+
+[node name="MargeMid" type="Control" parent="MenuSelection/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="ScoresButton" parent="MenuSelection/VBoxContainer" instance=ExtResource("4_uuuy5")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Best Scores"
+
+[node name="MargeMid2" type="Control" parent="MenuSelection/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="CreditsButton" parent="MenuSelection/VBoxContainer" instance=ExtResource("4_uuuy5")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Credits"
+
+[node name="MargeBottom" type="Control" parent="MenuSelection/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_aiphf")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
+
+[connection signal="on_touch_screen_released" from="MenuSelection/VBoxContainer/NewGamebutton" to="." method="_on_new_gamebutton_on_touch_screen_released"]
+[connection signal="on_touch_screen_released" from="MenuSelection/VBoxContainer/ScoresButton" to="." method="_on_scores_button_on_touch_screen_released"]
+[connection signal="on_touch_screen_released" from="MenuSelection/VBoxContainer/CreditsButton" to="." method="_on_credits_button_on_touch_screen_released"]

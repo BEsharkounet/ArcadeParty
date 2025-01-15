@@ -1,0 +1,59 @@
+[gd_scene load_steps=6 format=3 uid="uid://dvlflo3krnswi"]
+
+[ext_resource type="Script" path="res://Features/Menu/TouchScreenButtonSized/touch_screen_button_sized.gd" id="1_3c4n4"]
+[ext_resource type="Script" path="res://Features/Menu/TouchScreenButtonSized/touch_screen_button.gd" id="1_exjw7"]
+[ext_resource type="FontFile" uid="uid://sa48vw14x5j8" path="res://Features/Menu/TouchScreenButtonSized/Righteous-Regular.ttf" id="2_80yxa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_luwxj"]
+bg_color = Color(0.057172, 0.0971034, 0.321034, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w4rca"]
+size = Vector2(600, 100)
+
+[node name="TouchScreenButtonSized" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3c4n4")
+
+[node name="TouchScreenButtonSized" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_luwxj")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_80yxa")
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Control" node_paths=PackedStringArray("control_master")]
+shape = SubResource("RectangleShape2D_w4rca")
+script = ExtResource("1_exjw7")
+control_master = NodePath("../..")
+
+[connection signal="released" from="Control/TouchScreenButton" to="." method="_on_touch_screen_button_released"]

@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="ArcadeParty"
+run/main_scene="res://Features/SplashingScreen/SplashScreen.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -18,8 +19,20 @@ config/icon="res://icon.svg"
 
 SceneTransition="*res://Features/SceneTransition/Autoload/SceneTransition.gd"
 
+[display]
+
+window/size/viewport_width=600
+window/size/viewport_height=1066
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=1
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-environment/defaults/default_clear_color=Color(0.456464, 0.456464, 0.456464, 1)
+environment/defaults/default_clear_color=Color(0.344076, 0.344076, 0.344076, 1)
