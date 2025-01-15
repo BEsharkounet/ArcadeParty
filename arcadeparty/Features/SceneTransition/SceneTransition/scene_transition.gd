@@ -14,16 +14,9 @@ extends Control
 signal on_in_animation_finished()
 #endregion
 
-#region public properties
-## play animation when scene is shown
-@export var play_in_animation:bool = true
-## play animation when scene is left
-@export var play_out_animation:bool = true
-#endregion
-
 #region private properties
 var _scene_path_to_go_after_animation:String = ""
-var _animation_player:AnimationPlayer = null
+var _is_playing_backward:bool = false
 #endregion
 
 #region overrides
@@ -35,11 +28,9 @@ func _ready() -> void:
 #region public methods
 ## load and display the new scene from scene path
 func change_scene(scene_path:String) -> void:
-	if not _animation_player or not play_out_animation:
+	_scene_path_to_go_after_animation = scene_path
+	if not _start_transition_animation():
 		_execute_change_scene(scene_path)
-	else:
-		_scene_path_to_go_after_animation = scene_path
-		_start_transition_animation()
 
 ## display loading screen giving loading path for next scene
 func start_loading_screen(loading_screen_path:String, scene_path:String) -> void:
@@ -51,31 +42,48 @@ func start_loading_screen(loading_screen_path:String, scene_path:String) -> void
 #region private methods
 func _handle_animation() -> void:
 	_link_animation_signals()
-	if _animation_player:
-		if play_in_animation:
-			_start_in_animation()
-		else:
-			_animation_player.dodge_animation()
+	_start_in_animation()
 
 func _link_animation_signals() -> void:
-	if get_child_count() == 0: return
-	_animation_player = get_child(0)
-	_animation_player.animation_finished.connect(_on_animation_finished)
-
+	for animation:AnimationPlayer in get_children():
+		animation.animation_finished.connect(_on_animation_finished)
+	
 func _start_in_animation() -> void:
-	_animation_player.play("in_animation")
+	var animation_player:AnimationPlayer = _get_animation_in()
+	if animation_player:
+		animation_player.play_animation()
+
+# get a child that have in animation on true (is_in_animation)
+func _get_animation_in() -> AnimationPlayer:
+	for animation:AnimationPlayer in get_children():
+		if animation.is_in_animation:
+			return animation
+	return null
+
+# get a child that have out animation on true (is_out_animation)
+func _get_animation_out() -> AnimationPlayer:
+	for animation:AnimationPlayer in get_children():
+		if animation.is_out_animation:
+			return animation
+	return null
 
 func _execute_change_scene(scene_path:String)->void:
 	var packed_scene:PackedScene = load(scene_path)
 	get_tree().change_scene_to_packed(packed_scene)
 
-func _start_transition_animation()->void:
-	_animation_player.play("out_animation")
+# play out animation, return false if no animation is played
+func _start_transition_animation()->bool:
+	var animation_player:AnimationPlayer = _get_animation_out()
+	if animation_player:
+		_is_playing_backward = true
+		animation_player.play_backward_animation()
+		return true
+	return false
 #endregion
 
 #region signal handlers
 func _on_animation_finished(_anim_name:String) -> void:
-	if _anim_name == "out_animation":
+	if _is_playing_backward:
 		_execute_change_scene(_scene_path_to_go_after_animation)
 	else:
 		on_in_animation_finished.emit()

@@ -3,7 +3,7 @@ extends AnimationPlayer
 ## require to have in_animation and out_animation defined
 
 #region nodes
-@onready var _texture_rect:TextureRect = $TextureRect
+@onready var _container:VBoxContainer = $VBoxContainer
 #endregion
 
 #region public properties
@@ -28,8 +28,10 @@ func play_backward_animation() -> void:
 
 #region private methods
 func _set_state_as_start() -> void:
-	_texture_rect.modulate.a = 1
+	for textureRect:TextureRect in _container.get_children():
+		textureRect.modulate.a = 1
 
 func _set_state_as_end() -> void:
-	_texture_rect.modulate.a = 0
+	for textureRect:TextureRect in _container.get_children():
+		textureRect.modulate.a = 0
 #endregion

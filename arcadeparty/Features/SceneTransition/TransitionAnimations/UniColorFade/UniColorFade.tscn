@@ -1,22 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dy48h6pl1psq2"]
+[gd_scene load_steps=6 format=3 uid="uid://dy48h6pl1psq2"]
 
 [ext_resource type="Script" path="res://Features/SceneTransition/TransitionAnimations/UniColorFade/uni_color_fade.gd" id="1_e3ais"]
 [ext_resource type="Texture2D" uid="uid://cu6key7f1vl4t" path="res://Features/SceneTransition/TransitionAnimations/UniColorFade/background.png" id="1_ljydx"]
-
-[sub_resource type="Animation" id="Animation_r0vbg"]
-resource_name = "in_animation"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UniColorFade/TextureRect:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0666667, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_gennd"]
 length = 0.001
@@ -33,8 +18,8 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_5k8qe"]
-resource_name = "out_animation"
+[sub_resource type="Animation" id="Animation_r0vbg"]
+resource_name = "in_animation"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -42,17 +27,16 @@ tracks/0/path = NodePath("UniColorFade/TextureRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 1),
+"times": PackedFloat32Array(0.0666667, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_llwqg"]
 _data = {
 "RESET": SubResource("Animation_gennd"),
-"in_animation": SubResource("Animation_r0vbg"),
-"out_animation": SubResource("Animation_5k8qe")
+"in_animation": SubResource("Animation_r0vbg")
 }
 
 [node name="UniColorFade" type="AnimationPlayer"]

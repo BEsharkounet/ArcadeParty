@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b4ai2ckt3cafa" path="res://icon.svg" id="1_px4fx"]
 [ext_resource type="PackedScene" uid="uid://bv445g5wptlxy" path="res://Features/SceneTransition/SceneTransition/SceneTransition.tscn" id="2_w4hj1"]
-[ext_resource type="PackedScene" uid="uid://dy48h6pl1psq2" path="res://Features/SceneTransition/TransitionAnimations/UniColorFade/UniColorFade.tscn" id="3_rpb24"]
+[ext_resource type="PackedScene" uid="uid://cg7xobayabbpm" path="res://Features/SceneTransition/TransitionAnimations/MultiBoxColorFade/MultiBoxColorFade.tscn" id="3_7aowl"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -20,4 +20,4 @@ texture = ExtResource("1_px4fx")
 [node name="SceneTransition" parent="." instance=ExtResource("2_w4hj1")]
 layout_mode = 1
 
-[node name="UniColorFade" parent="SceneTransition" instance=ExtResource("3_rpb24")]
+[node name="MultiBoxColorFade" parent="SceneTransition" instance=ExtResource("3_7aowl")]
